@@ -1,3 +1,3 @@
 # Future-The-Origin-FINAL
  
-vanila js game
+vanila js game for local execution
