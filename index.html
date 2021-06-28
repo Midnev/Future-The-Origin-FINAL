@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Future</title>
+	<style>
+		body{
+			background-color: #c0c0c0
+		}
+		
+	</style>
+    
+	<script src = "js/dataset/DataSet.js"></script>	
+	<script src = "js/dataset/ItemData.js"></script>	
+	<script src = "js/dataset/KeySet.js"></script>	
+	<script src = "js/dataset/PatternData.js"></script>
+
+	<script src = "js/scenes/SceneController.js"></script>
+	<script src = "js/scenes/Menu.js"></script>
+	<script src = "js/scenes/Loading.js"></script>
+	<script src = "js/scenes/World.js"></script>
+	<script src = "js/scenes/Dead.js"></script>
+	<script src = "js/scenes/Cleared.js"></script>
+	<script src = "js/scenes/Pause.js"></script>
+	<script src = "js/scenes/BG.js"></script>
+	<script src = "js/scenes/Star.js"></script>
+	<script src = "js/scenes/Shaker.js"></script>
+
+	<script src = "js/scenes/UI.js"></script>
+
+	<script src = "js/effects/Effect_Charge.js"></script>
+	<script src = "js/effects/Effect_Lights.js"></script>
+	<script src = "js/effects/Effect_Hits.js"></script>
+
+
+	<script src = "js/objecthandlers/Deployer.js"></script>
+	<script src = "js/objecthandlers/Infinite_Deployer.js"></script>
+	<script src = "js/objecthandlers/Totem_Deployer.js"></script>
+	<script src = "js/objecthandlers/ImageLoader.js"></script>
+	<script src = "js/objecthandlers/DataReader.js"></script>	
+	<script src = "js/objecthandlers/TextReader.js"></script>	
+	<script src = "js/objecthandlers/canvasUtil.js"></script>	
+	<script src = "js/objecthandlers/PatternMaker.js"></script>	
+	<script src = "js/objecthandlers/ImageWriter.js"></script>	
+	
+	<script src = "js/objects/PlayerBulletHandler.js"></script>
+	<script src = "js/objects/Player.js"></script>
+	<script src = "js/objects/Player_Bullet.js"></script>
+	<script src = "js/objects/Player_Blade.js"></script>
+	<script src = "js/objects/Player_Bullet_Laser.js"></script>
+	<script src = "js/objects/Player_Missle.js"></script>
+	<script src = "js/objects/Player_Gravity.js"></script>
+	<script src = "js/objects/Player_Support_Follow.js"></script>
+	<script src = "js/objects/Player_Support_Rotate.js"></script>
+	<script src = "js/objects/Player_Shield.js"></script>
+	<script src = "js/objects/Player_Laser.js"></script>
+	<script src = "js/objects/Player_EnergyBall.js"></script>	
+
+	<script src = "js/objects/Enemy.js"></script>
+	<script src = "js/objects/Enemy2.js"></script>
+	<script src = "js/objects/Enemy3.js"></script>
+	<script src = "js/objects/Enemy4.js"></script>
+	<script src = "js/objects/Enemy5.js"></script>
+
+	<script src = "js/objects/Enemy_Boss.js"></script>
+	<script src = "js/objects/Enemy_Boss_Laser.js"></script>
+	<script src = "js/objects/Enemy_Boss2.js"></script>
+	<script src = "js/objects/Enemy_Boss3.js"></script>
+	<script src = "js/objects/Enemy_Boss3_Part_2.js"></script>
+	<script src = "js/objects/Enemy_Boss3_Part_3.js"></script>
+	<script src = "js/objects/Enemy_Boss3_Part_4.js"></script>
+	<script src = "js/objects/Enemy_EnergyBall.js"></script>
+
+
+	<script src = "js/objects/Enemy_Bullet.js"></script>
+	<script src = "js/objects/Enemy_Ballastic_Bullet.js"></script>
+	<script src = "js/objects/Enemy_Bullet_Trace.js"></script>
+	<script src = "js/objects/Enemy_Boss2_Shield.js"></script>
+	<script src = "js/objects/Enemy_Bullet_Freezer.js"></script>
+
+	<script src = "js/objects/Enemy_Laser.js"></script>
+	<script src = "js/objects/Enemy_Laser_Gadget.js"></script>
+
+	<script src = "js/objects/Item.js"></script>
+
+	<script src = "js/objects/Totem.js"></script>
+
+	
+       <script type="text/javascript">
+            var sceneCon;
+            window.addEventListener('load',eventWindowLoaded, false);
+
+            function eventWindowLoaded(){
+                canvasApp();
+            }
+
+            function canvasSupport(){
+                //return Modenizr.canvas
+                return true;
+            }
+
+            function canvasApp(){
+                if(!canvasSupport()){
+                    return;
+                }else{
+                    var canvas = document.getElementById("canvas");
+                    var lastTime = 0
+                    sceneCon = new SceneController(canvas);
+
+                    //'click'
+                    //world.canvas.addEventListener('mousemove', function(e){
+                    //   
+                    //},false)
+
+                    document.addEventListener('keydown', function(e){
+						//log(e.keyCode)
+                        sceneCon.keyset.keyDown(e.keyCode)
+                    },false)
+                    document.addEventListener('keyup', function(e){
+                       sceneCon.keyset.keyUp(e.keyCode)
+                    },false)
+                    window.requestAnimationFrame( function(){ ready(); })
+                    function ready(){
+                        window.requestAnimationFrame( function(){loop()});
+                    }
+                    function loop(){
+                       sceneCon.run();
+                        window.requestAnimationFrame( function(){loop()});
+                    }
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div style="position: absolute; top: 50px; left: 100px">
+            <canvas id="canvas" width="450" height="700">
+                Your browser doesn't support HTML5 Canvas
+            </canvas>
+        </div>
+    </body>
+</html>
