@@ -49,8 +49,8 @@ Menu.prototype.update = function(){
 		this.sc.game_level = 1;
 		this.sc.world_level = 0
 		this.sc.init()
-		world.score = 0;
-		world.player.resetAll()
+		this.sc.world.score = 0;
+		this.sc.world.player.resetAll()
 	}
     
 	
