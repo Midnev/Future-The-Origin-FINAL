@@ -3,11 +3,87 @@
     <head>
         <title>Future</title>
 	<style>
+
 		body{
-			background-color: #c0c0c0
+			background-color: #c0c0c0;
+			height:800px;
+			width: 650px;
 		}
+		/*@media  (max-width: 480px) {
+		  .ch{
+			
+			top: 0px; 
+			left: 0px
+			}
+		}*/
+
+
+		body > .ch{
+			position: absolute; 
+			top: 50px; 
+			left: 100px
+		}
+		/*body > .ch > #canvas{
+			aspect-ratio: auto 450 / 700;
+			height:700px;
+			width:450px;
+		}*/
 		
+
 	</style>
+	<style type="text/css">
+		/*@media  (max-width: 480px) {
+		  #mobile-btns{
+		  	display: block;
+		  }
+		}
+		@media  (min-width: 480px) {
+		  #mobile-btns{
+		  	display: none;
+		  }
+		}*/
+
+
+        	#mobile-btns{
+        		/*display: none;*/
+			background-color: transparent;
+			height:250px;
+			width:450px;
+			position: absolute;
+			top: 750px; 
+			left: 100px
+		}
+        	#mobile-btns div{
+        		height: 50px;
+        		width:450px;
+        	}
+        	#mobile-btns input{
+        		height: 50px;
+        		width: 50px;
+        		background-color: white;
+        		color: black;
+        		font-weight: bold;
+        	}
+        	#mobile-btns > #up-btn > input{
+        		margin-left: 200px;
+        		
+        		
+        	}
+        	#mobile-btns > .lr-btns > #left-btn{
+        		margin-left: 75px;
+        	}
+        	#mobile-btns > .lr-btns > #right-btn{
+        		margin-left: 200px;
+        	}
+        	#mobile-btns > #down-btn > input{
+        		margin-left: 200px;
+        	}
+
+        	#mobile-btns > #util-btns > input{
+        		margin-left: 50px;
+        	}
+
+        </style>
 
 	
 
@@ -132,12 +208,45 @@
                 }
             }
         </script>
+        <script type="text/javascript">
+        	function mobileKeyClick(k){
+        			sceneCon.keyset.keyDown(k);
+        	}
+        	function mobileKeyRelease(k){
+        			sceneCon.keyset.keyUp(k);
+        	}
+        </script>
     </head>
     <body>
-        <div style="position: absolute; top: 50px; left: 100px">
+        <div class="ch">
             <canvas id="canvas" width="450" height="700">
                 Your browser doesn't support HTML5 Canvas
             </canvas>
         </div>
+
+        <div id="mobile-btns">
+        	<div id="up-btn">
+        		<input type="button" value="U" onmousedown="mobileKeyClick(UP)" onmouseup="mobileKeyRelease(UP)">
+        	</div>
+        	<div class="lr-btns">
+        			<input id="left-btn" type="button" value="L" onmousedown="mobileKeyClick(LEFT)" onmouseup="mobileKeyRelease(LEFT)">
+        			<input id="right-btn" type="button" value="R" onmousedown="mobileKeyClick(RIGHT)" onmouseup="mobileKeyRelease(RIGHT)">
+        	</div>
+        	
+        	<div id="down-btn">
+        		<input type="button" value="D" onmousedown="mobileKeyClick(DOWN)" onmouseup="mobileKeyRelease(DOWN)">
+        	</div>
+
+        	<div></div>
+        	<div id="util-btns">
+        		<input type="button" name="" value="Z" onmousedown="mobileKeyClick(KEY_Z)" onmouseup="mobileKeyRelease(KEY_Z)">
+        		<input type="button" name="" value="X" onmousedown="mobileKeyClick(KEY_X)" onmouseup="mobileKeyRelease(KEY_X)">
+        		<input type="button" name="" value="C" onmousedown="mobileKeyClick(KEY_C)" onmouseup="mobileKeyRelease(KEY_C)">
+        		<input type="button" name="" value="Space" onmousedown="mobileKeyClick(SPACE)" onmouseup="mobileKeyRelease(SPACE)">
+        	</div>
+        </div>
     </body>
+    <script type="text/javascript">
+    	
+    </script>
 </html>
